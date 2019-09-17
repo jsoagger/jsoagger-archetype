@@ -1,0 +1,143 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util" xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context.xsd
+                http://www.springframework.org/schema/aop
+                http://www.springframework.org/schema/aop/spring-aop.xsd
+                http://www.springframework.org/schema/tx
+       	 		http://www.springframework.org/schema/tx/spring-tx.xsd
+                http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<context:annotation-config base-package="io.github.jsoagger,${package}"/>
+	<context:component-scan  base-package="io.github.jsoagger.core.server,${package}"/>
+	
+    <tx:annotation-driven transaction-manager="transactionManager" mode="proxy" proxy-target-class="true"/>
+
+
+    <bean id="shiroFilter"
+		class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/view/login" />
+		<property name="successUrl" value="/view/welcome" />
+		<property name="unauthorizedUrl" value="/view/404" />
+		<property name="filterChainDefinitions">
+			<value>
+				${symbol_pound} anonymous access urls
+				/anon/** = anon
+				/login = anon
+				/logout = anon
+
+				${symbol_pound} allow content in public
+				/pages/** = anon
+				/welcome = anon
+
+				${symbol_pound} allow content in static
+				/js/** = anon
+				/css/** = anon
+				/webjars/** = anon
+				/img/** = anon
+
+				${symbol_pound} allow WebStart to pull the jars for the swing app:
+				/*.jar = anon
+
+				${symbol_pound} everything else requires authentication:
+				/** = authc
+			</value>
+		</property>
+	</bean>
+    
+	
+	<!-- <bean id="mainDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+    <bean id="mainDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${symbol_dollar}{spring.datasource.driver-class-name}" />
+        <property name="url" value="${symbol_dollar}{spring.datasource.url}" />
+        <property name="username" value="${symbol_dollar}{spring.datasource.username}" />
+        <property name="password" value="${symbol_dollar}{spring.datasource.password}" />
+        <property name="defaultAutoCommit" value="false" />
+        <property name="initialSize" value="10" />
+    </bean>    
+    
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+	  <tx:attributes>
+	    <!-- all methods starting with 'get' are read-only -->
+	    <tx:method name="get*" read-only="true"   propagation="SUPPORTS" isolation="DEFAULT"/>
+	    <tx:method name="find*" read-only="true"  propagation="SUPPORTS"/>
+	    <tx:method name="load*" read-only="true"  propagation="SUPPORTS"/>
+	    
+	    <tx:method name="create*" read-only="false" propagation="REQUIRED"/>
+	    <tx:method name="delete*" read-only="false" propagation="REQUIRED"/>
+	    <tx:method name="update*" read-only="false" propagation="REQUIRED"/>
+	    <tx:method name="rename*" read-only="false" propagation="REQUIRED"/>
+	    <tx:method name="set*" read-only="false" propagation="REQUIRED"/>
+	  	<tx:method name="add*" read-only="false" propagation="REQUIRED"/>
+	  	<tx:method name="remove*" read-only="false" propagation="REQUIRED"/>
+	  	<tx:method name="populate*" read-only="false" propagation="REQUIRED"/>
+	  	<tx:method name="generate*" read-only="false" propagation="REQUIRED"/>
+	  	<tx:method name="getPreference" read-only="false" propagation="REQUIRED"/>
+	  	
+	    
+	    <!-- other methods use the default transaction settings (see below) -->
+	    <tx:method name="*" propagation="SUPPORTS"/>
+	  </tx:attributes>
+  	</tx:advice>
+  	
+  	
+  	<!-- DAO EXCECUTION -->
+  	<aop:config>
+	  	<aop:pointcut id="DAOOperation" expression="execution(* io.github.jsoagger.core.server.dao.impl.*.*(..))"/>
+  		<aop:advisor advice-ref="txAdvice" pointcut-ref="DAOOperation"/>
+  	</aop:config>
+  	<aop:config>
+	  	<aop:pointcut id="DAORulesOperation" expression="execution(* io.github.jsoagger.core.server.dao.rules.*.*(..))"/>
+  		<aop:advisor advice-ref="txAdvice" pointcut-ref="DAORulesOperation"/>
+  	</aop:config>
+  	
+  	
+  	<!-- SERVICES EXCECUTION -->
+  	<aop:config>
+	  	<aop:pointcut id="WorkflowServiceOperation" expression="execution(* io.github.jsoagger.core.server.service.local.impl.*.*(..))"/>
+  		<aop:advisor advice-ref="txAdvice" pointcut-ref="WorkflowServiceOperation"/>
+  	</aop:config>
+  	
+  	<aop:config>
+	  	<aop:pointcut id="RulesValidationOperation" expression="execution(* io.github.jsoagger.core.server.service.local.rules.*x.*(..))"/>
+  		<aop:advisor advice-ref="txAdvice" pointcut-ref="RulesValidationOperation"/>
+  	</aop:config>
+
+	<aop:config>
+	  	<aop:pointcut id="RulesProcessorOperation" expression="execution(* io.github.jsoagger.core.server.service.local.VetoableRulesProcessor.*(..))"/>
+  		<aop:advisor advice-ref="txAdvice" pointcut-ref="RulesProcessorOperation"/>
+  	</aop:config>
+	  	
+
+    <!--
+        DATASOURCE AND TRANSACTION
+    -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+        </property>
+       	<property name="loadTimeWeaver">
+            <bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
+        </property>
+        <property name="packagesToScan" value="io.github.jsoagger.core.model,${package}.model" />
+        <property name="dataSource" ref="mainDataSource" />
+        <property name="persistenceUnitName" value="microservice-persistence-unit" />
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+        <property name="dataSource" ref="mainDataSource" />
+    </bean>
+
+    <!-- If you want to add support for just @PersistenceContext, and not the other annotations that <context:annotation-config /> supports -->
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" scope="singleton" />
+    <bean id="persistenceExceptionTranslationPostProcessor" class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+</beans>

@@ -1,0 +1,350 @@
+<!-- ========================LICENSE_START================================= 
+	JSoagger  %% Copyright (C) 2019 JSOAGGER %% Licensed under the Apache 
+	License, Version 2.0 (the "License"); you may not use this file except in 
+	compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+	Unless required by applicable law or agreed to in writing, software distributed 
+	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
+	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+	the specific language governing permissions and limitations under the License. 
+	=========================LICENSE_END================================== -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>it.pkg</groupId>
+	<artifactId>desktop</artifactId>
+	<version>0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<description>JSoagger JFX Quick Start</description>
+	<name>Quick start</name>
+	<url>https://github.com/nexitia/</url>
+
+
+	<properties>
+		<fully.qualified.main.class>it.pkg.beanproviders.ApplicationLauncher</fully.qualified.main.class>
+
+		<javafx.version>11</javafx.version>
+		<ikonli.version>11.0.0</ikonli.version>
+		<ikonli.kordamp.version>11.0.0</ikonli.kordamp.version>
+		<jphoenix.version>9.0.6</jphoenix.version>
+		<jfxetras.version>9.0-r1</jfxetras.version>
+
+		<jsoagger.platform.version>11.0.4-SNAPSHOT</jsoagger.platform.version>
+		<jsoagger.core.version>11.0.9-SNAPSHOT</jsoagger.core.version>
+		<java.source.level>11</java.source.level>
+		<java.target.level>1.9</java.target.level>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-base</artifactId>
+				<version>${javafx.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-controls</artifactId>
+				<version>${javafx.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-web</artifactId>
+				<version>${javafx.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-graphics</artifactId>
+				<version>${javafx.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-fxml</artifactId>
+				<version>${javafx.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-media</artifactId>
+				<version>${javafx.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-swing</artifactId>
+				<version>${javafx.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>2.8.6-SNAPSHOT</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jfoenix</groupId>
+			<artifactId>jfoenix</artifactId>
+			<version>${jphoenix.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.kordamp.ikonli</groupId>
+			<artifactId>ikonli-core</artifactId>
+			<version>${ikonli.kordamp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kordamp.ikonli</groupId>
+			<artifactId>ikonli-javafx</artifactId>
+			<version>${ikonli.kordamp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kordamp.ikonli</groupId>
+			<artifactId>ikonli-material-pack</artifactId>
+			<version>${ikonli.kordamp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kordamp.ikonli</groupId>
+			<artifactId>ikonli-fontawesome-pack</artifactId>
+			<version>${ikonli.kordamp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kordamp.ikonli</groupId>
+			<artifactId>ikonli-materialdesign-pack</artifactId>
+			<version>${ikonli.kordamp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kordamp.ikonli</groupId>
+			<artifactId>ikonli-devicons-pack</artifactId>
+			<version>${ikonli.kordamp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kordamp.ikonli</groupId>
+			<artifactId>ikonli-hawconsstroke-pack</artifactId>
+			<version>${ikonli.kordamp.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.github.jsoagger</groupId>
+			<artifactId>jsoagger-jfxcore-engine</artifactId>
+			<version>${jsoagger.platform.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jsoagger</groupId>
+			<artifactId>jsoagger-jfxcore-api</artifactId>
+			<version>${jsoagger.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jsoagger</groupId>
+			<artifactId>jsoagger-core-ioc</artifactId>
+			<version>${jsoagger.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jsoagger</groupId>
+			<artifactId>jsoagger-core-bridge</artifactId>
+			<version>${jsoagger.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jsoagger</groupId>
+			<artifactId>jsoagger-core-i18n</artifactId>
+			<version>${jsoagger.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jsoagger</groupId>
+			<artifactId>jsoagger-jfxcore-viewdefinition-json</artifactId>
+			<version>${jsoagger.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jsoagger</groupId>
+			<artifactId>jsoagger-cloudstub-operations</artifactId>
+			<version>${jsoagger.platform.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jsoagger</groupId>
+			<artifactId>jsoagger-core-utils</artifactId>
+			<version>${jsoagger.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jsoagger</groupId>
+			<artifactId>jsoagger-jfxcore-components</artifactId>
+			<version>${jsoagger.platform.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jsoagger</groupId>
+			<artifactId>jsoagger-jfxplatform-components</artifactId>
+			<version>${jsoagger.platform.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jsoagger</groupId>
+			<artifactId>jsoagger-jfxcore-desktop-integration</artifactId>
+			<version>${jsoagger.platform.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jsoagger</groupId>
+			<artifactId>jsoagger-jfxcore11</artifactId>
+			<version>${jsoagger.platform.version}</version>
+		</dependency>
+
+
+		<!--JavaFx libraries in 11 out from JDK -->
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-base</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-controls</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-fxml</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-media</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-swing</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.10</version>
+				<configuration>
+					<classpathContainers>
+						<classpathContainer>
+							org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11
+						</classpathContainer>
+					</classpathContainers>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<release>11</release>
+					<source>11</source>
+					<target>1.8</target>
+					<showWarnings>true</showWarnings>
+					<showDeprecation>true</showDeprecation>
+					<fork>true</fork>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>libs/</classpathPrefix>
+							<mainClass>${fully.qualified.main.class}</mainClass>
+						</manifest>
+					</archive>
+					<finalName>desktop</finalName>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.1.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<appendAssemblyId>false</appendAssemblyId>
+							<finalName>desktop-${zip-suffix}-${pom.version}</finalName>
+							<descriptors>
+								<descriptor>src/main/assembly/zip.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.1.1</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/libs</outputDirectory>
+							<overWriteReleases>true</overWriteReleases>
+							<overWriteSnapshots>true</overWriteSnapshots>
+							<excludeTransitive>false</excludeTransitive>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<!-- Handle delivery -->
+		<profile>
+			<id>macos</id>
+			<activation>
+				<os>
+					<family>mac</family>
+				</os>
+			</activation>
+			<properties>
+				<zip-suffix>macos</zip-suffix>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>windows</id>
+			<activation>
+				<os>
+					<family>windows</family>
+				</os>
+			</activation>
+			<properties>
+				<zip-suffix>windows</zip-suffix>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>unix</id>
+			<activation>
+				<os>
+					<family>unix</family>
+					<name>Linux</name>
+				</os>
+			</activation>
+			<properties>
+				<zip-suffix>linux</zip-suffix>
+			</properties>
+		</profile>
+	</profiles>
+</project>
