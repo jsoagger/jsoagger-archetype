@@ -1,0 +1,48 @@
+language: java
+
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+
+cache:
+  directories:
+    - node_modules
+
+            
+services:
+  - docker    
+
+
+before_install:
+    - export GPG_TTY=/dev/pts/4
+    - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
+    - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
+    - docker version
+    - docker info
+    - export project_version=1.0.0
+    - echo $project_version
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+
+install:
+    docker build -f Dockerfile-travis -t jsoagger/soagg-webdev:$project_version .      
+    
+    
+deploy:
+# 1. Trigger a snapshot deploy when commit a stable version
+    - provider: script
+      script:
+        - docker push jsoagger/soagg-webdev:$project_version
+      skip_cleanup: true
+      on:
+        branch: master
+
+
+# 2. Trigger a version deploy when a commit on tag
+    - provider: script
+      script: bash .travis/release.sh 
+      skip_cleanup: true
+      on:
+        tags: true
+        all_branches: true

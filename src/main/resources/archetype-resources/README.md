@@ -1,4 +1,8 @@
+# Generate a fullstack project
+
 > mvn archetype:generate -DarchetypeGroupId=io.github.jsoagger -DarchetypeArtifactId=jsoagger-fullstack-archetype -DarchetypeVersion=LATEST -DartifactId=helloWorld
+
+# Build the project
 
 > cd helloWorld
 
@@ -6,24 +10,31 @@
 
 > mvn clean install -P h2,docker
 
+
+# Run it!
+
 > docker-compose -f compose-dev.yaml up
+
+# Browse
+
+CORS must be disabled from your browser configuration.
 
 > http://localhost:3000/#/c/login
 
+
+# Launch desktop and mobile applications
 
 java -jar desktop/target/desktop-1.0-SNAPSHOT.jar --jsoagger.client.mode=desktop
 java -jar desktop/target/desktop-1.0-SNAPSHOT.jar --jsoagger.client.mode=simul_mobile
 
 
+# Load datas
 
-1. BUILD
-> mvn clean install -P h2,docker
+You can delete the generated h2 database and load datas by running following container.
 
-2. HOW TO RUN
->> You must provide file : spring-app.admin.properties
->> This file contains the spring properties
+Be aware of network 'helloworld_the_soagg_network', server is reachable only in a scpecific network. 
 
-> java -jar manager-sb.jar --ep.remote.host=http://localhost:8080/jsoagger --spring.config.location=file:./_docker-compose/server/application.properties
-> docker run -d --rm -e MANAGED_BACKEND_REST_URL='http://soagg-foundation-srv:8080/jsoagger' -v ./_docker-compose/server/:/spring-config/ helloworld/starter-manager:1.0-SNAPSHOT
+> docker run --rm --name soagg-foundation-data --network=helloworld_the_soagg_network -v  ./_docker-compose/manager:/spring-config/ jsoagger/soagg-foundation-data:1.0.1
+
 
 

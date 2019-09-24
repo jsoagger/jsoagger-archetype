@@ -35,6 +35,22 @@ services:
       - the_soagg_network
 
 
+  soagg-manager:
+    image: helloworld/starter-foundation-manager:1.0.0-SNAPSHOT
+    tty: true
+    stdin_open: true
+    environment:
+      - MANAGED_BACKEND_REST_URL=http://soagg-foundation-srv:8080/jsoagger
+
+    volumes:
+      - ./_docker-compose/manager:/spring-config/:ro
+
+    depends_on: 
+      - soagg-foundation-srv
+      
+    networks:
+      - the_soagg_network
+      
   soagg-webdev:
     image: helloworld/starter-web-reactapp:1.0.0-SNAPSHOT
     ports:

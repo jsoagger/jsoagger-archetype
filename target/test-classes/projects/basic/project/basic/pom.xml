@@ -29,7 +29,7 @@
 		<skip.javadoc>true</skip.javadoc>
 		<skip.docker.build>true</skip.docker.build>
 		
-		<internal.services.project.version>&gt;1.0.0-SNAPSHOT</internal.services.project.version>
+		<internal.services.project.version>1.0.0</internal.services.project.version>
 		<internal.core.project.version>1.0.0</internal.core.project.version>
 		<internal.operations.project.version>1.0.1</internal.operations.project.version>
 		<docker.maven.plugin.version>1.4.9</docker.maven.plugin.version>
@@ -694,6 +694,7 @@
     		<id>common-configuration</id>
     		<activation><activeByDefault>true</activeByDefault></activation>
 			<properties>
+				<mvn_set_application.application.default.password>epadmin</mvn_set_application.application.default.password>			
 				<mvn_set_application.system.email.address>epadmin@example.com</mvn_set_application.system.email.address>			
 				<mvn_set_application.system.email.display.name>JSoagger Administrator</mvn_set_application.system.email.display.name>			
 				<mvn_set_application.application.administrator.nickname>epadmin</mvn_set_application.application.administrator.nickname>			

@@ -32,7 +32,7 @@ RUN chmod +x /myproject-cli/entry-point.sh
 RUN chmod +x /runcli.sh
 
 
-COPY target/app-manager-sb.jar /myproject-cli/app.jar
+COPY target/starter-manager-sb.jar /myproject-cli/app.jar
 
 ENV JAVA_OPTS=""
 #ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /myproject-cli/app.jar --ep.remote.host=http://myproject-rest-service:8080/myproject" ]

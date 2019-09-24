@@ -31,7 +31,7 @@
 		<dependency>
 			<groupId>io.github.jsoagger</groupId>
 			<artifactId>jsoagger-manager</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 
 		
@@ -107,7 +107,7 @@
 				<groupId>com.spotify</groupId>
 				<artifactId>dockerfile-maven-plugin</artifactId>
 				<configuration>
-					<repository>helloworld/app-manager</repository>
+					<repository>helloworld/starter-foundation-manager</repository>
 					<skipBuild>${skip.docker.build}</skipBuild>
 					<tag>${project.version}</tag>
 				</configuration>
@@ -115,7 +115,7 @@
 
 		</plugins>
 
-		<finalName>app-${artifactId}</finalName>
+		<finalName>starter-${artifactId}</finalName>
 		<pluginManagement>
 			<plugins>
 				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
@@ -146,4 +146,13 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	
+	<profiles>
+		<profile>
+			<id>docker</id>
+			<properties>
+				<skip.docker.build>false</skip.docker.build>
+			</properties>
+		</profile>
+	</profiles>	
 </project>

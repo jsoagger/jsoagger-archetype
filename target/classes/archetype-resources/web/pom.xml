@@ -24,7 +24,7 @@
 
 	<properties>
 		<jsoagger-web-module.name>jsoagger-webdev</jsoagger-web-module.name>
-		<jsoagger-web-module.version>1.0.0-SNAPSHOT</jsoagger-web-module.version>
+		<jsoagger-web-module.version>1.0.0</jsoagger-web-module.version>
 		<skip.docker.build>true</skip.docker.build>
 	</properties>
 

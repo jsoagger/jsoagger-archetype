@@ -1,0 +1,78 @@
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/SETTINGS/1.0.0" xsi:schemalocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <servers>
+        <server>
+            <!-- Maven Central Deployment -->
+            <id>ossrh</id>
+            <username>${env.SONATYPE_USERNAME}</username>
+            <password>${env.SONATYPE_PASSWORD}</password>
+        </server>
+    </servers>
+
+      <profiles>
+      	<profile>
+      		<id>docker</id>
+      		<properties>
+      			<mvn_set_application.application.default.password>epadmin</mvn_set_application.application.default.password>
+	    		<mvn_set_application.home>/tmp/jsoagger/APP_TMP_HOME</mvn_set_application.home>
+				<mvn_set_application.log.dir>/tmp/jsoagger/APP_TMP_HOME</mvn_set_application.log.dir>
+				<mvn_set_application.temp.dir>/tmp/jsoagger/APP_TMP_HOME</mvn_set_application.temp.dir>
+				<mvn_set_application.remote.import.temp.dir>/tmp/jsoagger/APP_TMP_HOME/RemoteImport</mvn_set_application.remote.import.temp.dir>
+				<mvn_set_application.batch.log.dir>/tmp/jsoagger/APP_TMP_HOME/Batch_Logs</mvn_set_application.batch.log.dir>			
+				<mvn_set_application.batch.discarded.dir>/tmp/jsoagger/APP_TMP_HOME/Batch_Discarded</mvn_set_application.batch.discarded.dir>			
+				<mvn_set_application.install.batch.log.dir>/tmp/jsoagger/APP_TMP_HOME/INSTALL/Batch_Logs</mvn_set_application.install.batch.log.dir>			
+				<mvn_set_application.install.batch.discarded.dir>/tmp/jsoagger/APP_TMP_HOME/INSTALL/Batch_Discarded</mvn_set_application.install.batch.discarded.dir>			
+				<mvn_set_application.install.log.dir>/tmp/jsoagger/APP_TMP_HOME/INSTALL/Logs</mvn_set_application.install.log.dir>			
+				<mvn_set_application.batch.log.file.extension>.txt</mvn_set_application.batch.log.file.extension>			
+				<mvn_set_application.batch.log.file.prefix>LOG_</mvn_set_application.batch.log.file.prefix>			
+				<mvn_set_application.batch.log.file.date.format>dd_MM_yyyy_hhmmss</mvn_set_application.batch.log.file.date.format>		    
+				<mvn_set_application.env.mode>PROD</mvn_set_application.env.mode>
+      		</properties>
+      	</profile>
+		<profile>
+		  <id>common</id>
+		  <activation>
+	          <activeByDefault>true</activeByDefault>
+	      </activation>
+		  <properties>
+		  	<mvn_set_application.application.default.password>epadmin</mvn_set_application.application.default.password>
+			<mvn_set_application.system.email.address>epadmin@nexitia.com</mvn_set_application.system.email.address>			
+			<mvn_set_application.system.email.display.name>JSoagger Administrator</mvn_set_application.system.email.display.name>			
+			<mvn_set_application.application.administrator.nickname>epadmin</mvn_set_application.application.administrator.nickname>			
+			
+			<mvn_set_application.mail.host>smtp.gmail.com</mvn_set_application.mail.host>
+			<mvn_set_application.mail.port>465</mvn_set_application.mail.port>
+			<mvn_set_application.mail.transport.protocol>smtp</mvn_set_application.mail.transport.protocol>									
+			<mvn_set_application.mail.smtp.auth>true</mvn_set_application.mail.smtp.auth>									
+			<mvn_set_application.mail.debug>false</mvn_set_application.mail.debug>																		
+			<mvn_set_application.mail.smtp.starttls.enable>true</mvn_set_application.mail.smtp.starttls.enable>	
+			
+			<mvn_set_application.persistence.env>prod</mvn_set_application.persistence.env>
+			<mvn_set_application.shared.cache.mode>ENABLE_SELECTIVE</mvn_set_application.shared.cache.mode>
+			<mvn_set_application.hibernate.second.level.cache>false</mvn_set_application.hibernate.second.level.cache>
+			<mvn_set_application.hibernate.generate.ddl>false</mvn_set_application.hibernate.generate.ddl>
+			<mvn_set_application.hibernate.hbm2ddl.auto>validate</mvn_set_application.hibernate.hbm2ddl.auto>
+			<mvn_set_application.hibernate.show_sql>false</mvn_set_application.hibernate.show_sql>
+			<mvn_set_application.hibernate.format_sql>false</mvn_set_application.hibernate.format_sql>
+			<mvn_set_application.hibernate.transaction.flush_before_completion>true</mvn_set_application.hibernate.transaction.flush_before_completion>
+			<mvn_set_application.javax.persistence.schema-generation.create-sourcemetadata-then-script>metadata-then-script</mvn_set_application.javax.persistence.schema-generation.create-sourcemetadata-then-script>
+			<mvn_set_application.javax.persistence.schema-generation.drop-source>metadata-then-script</mvn_set_application.javax.persistence.schema-generation.drop-source>
+			<mvn_set_application.jpa.vendor.adapter>org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter</mvn_set_application.jpa.vendor.adapter>	
+			<mvn_set_application.persistence.unit.name>jsoagger-master-persistence-unit</mvn_set_application.persistence.unit.name>
+			<mvn_set_application.persistence.provider>org.hibernate.jpa.HibernatePersistenceProvider</mvn_set_application.persistence.provider>		
+		  </properties>
+		</profile>
+  
+	      <profile>
+	        <id>ossrh</id>
+	        <activation>
+	          <activeByDefault>true</activeByDefault>
+	        </activation>
+	        <properties>
+	          <gpg.executable>${env.GPG_EXECUTABLE}</gpg.executable>
+	          <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
+	        </properties>
+	      </profile>
+    </profiles>
+</settings>
+
+
