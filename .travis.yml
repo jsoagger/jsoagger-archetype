@@ -1,17 +1,31 @@
 language: java
 
+# -------------  ALL BRANCHES FIRE MVN INSTALL  ------------- ------------- --------
+# DEVELOP: BUILD ON COMMIT (NO DEPLOY)
+# MASTER: BUILD ON COMMIT (NO DEPLOY)
+# +++++++++++++  STABLE AND TAGS FIRE DEPLOY    ++++++++++++++++++++++++++++++++++++
+# STABLE: BUILD ON COMMIT + DEPLOY SNAPSHOT RELEASE
+# TAGS: BUILD ON COMMIT + DEPLOY SONATYPE VERSION  RELEASE
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Be aware when adding 'branch.only' they can exclude tags deployment is not fired
+# -------------------------- ------------- ------------- ------------- ------------- 
+
+
 matrix:
   include:
     - os: linux
-      dist: trusty
-
+      dist: xenial
+      jdk: openjdk11
+                  
 cache:
-  directories:
-    - node_modules
+    directories:
+    - $HOME/.m2/repository
 
-            
-services:
-  - docker    
+
+script:
+  - echo PATH = ${PATH}
+  - echo $JAVA_HOME
+  - java -version
 
 
 before_install:
@@ -20,26 +34,25 @@ before_install:
     - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
     - docker version
     - docker info
-    - export project_version=1.0.0
+    - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
+    - export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
     - echo $project_version
-    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
 
-install:
-    docker build -f Dockerfile-travis -t jsoagger/soagg-webdev:$project_version .      
-    
-    
-deploy:
+install: 
+    mvn --settings .maven.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true  -B -V
+
+
+deploy: 
 # 1. Trigger a snapshot deploy when commit a stable version
     - provider: script
-      script:
-        - docker push jsoagger/soagg-webdev:$project_version
+      script: bash .travis/snapshot.sh 
       skip_cleanup: true
       on:
-        branch: master
+        branch: stable
 
 
-# 2. Trigger a version deploy when a commit on tag
+# 1. Trigger a version deploy when a commit on tag
     - provider: script
       script: bash .travis/release.sh 
       skip_cleanup: true
