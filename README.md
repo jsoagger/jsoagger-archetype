@@ -1,5 +1,5 @@
 
-Maven achertype for starting quickly a full stack Java application with spring boot, React.js, JavaFX, docker, JPA, Hibernate and more famous java libraries.
+Maven achertype for  quickly start full stack Java application development with spring boot, React.js, JavaFX, docker, JPA, Hibernate and more famous java libraries.
 
 # Prerquisites
 
