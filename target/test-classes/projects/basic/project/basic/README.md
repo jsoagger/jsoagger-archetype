@@ -32,9 +32,9 @@ java -jar desktop/target/desktop-1.0-SNAPSHOT.jar --jsoagger.client.mode=simul_m
 
 You can delete the generated h2 database and load datas by running following container.
 
-Be aware of network 'helloworld_the_soagg_network', server is reachable only in a scpecific network. 
+Be aware of network 'helloWorld_the_soagg_network', server is reachable only in a scpecific network. 
 
-> docker run --rm --name soagg-foundation-data --network=helloworld_the_soagg_network -v  ./_docker-compose/manager:/spring-config/ jsoagger/soagg-foundation-data:1.0.1
+> docker run --rm --name soagg-foundation-data --network=helloWorld_the_soagg_network -v  ./_docker-compose/manager:/spring-config/ jsoagger/soagg-foundation-data:1.0.1
 
 
 

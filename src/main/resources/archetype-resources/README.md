@@ -24,17 +24,6 @@ CORS must be disabled from your browser configuration.
 
 # Launch desktop and mobile applications
 
-java -jar desktop/target/desktop-1.0-SNAPSHOT.jar --jsoagger.client.mode=desktop
-java -jar desktop/target/desktop-1.0-SNAPSHOT.jar --jsoagger.client.mode=simul_mobile
-
-
-# Load datas
-
-You can delete the generated h2 database and load datas by running following container.
-
-Be aware of network 'helloworld_the_soagg_network', server is reachable only in a scpecific network. 
-
-> docker run --rm --name soagg-foundation-data --network=helloworld_the_soagg_network -v  ./_docker-compose/manager:/spring-config/ jsoagger/soagg-foundation-data:1.0.1
-
-
+java -jar desktop/target/desktop-1.0.0-SNAPSHOT.jar --jsoagger.client.mode=desktop
+java -jar desktop/target/desktop-1.0.0-SNAPSHOT.jar --jsoagger.client.mode=simul_mobile
 
