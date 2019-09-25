@@ -7,11 +7,8 @@ Maven achertype for starting quickly a full stack Java application with spring b
 2. Install docker container
 3. Intall JAVA 11
 
-# Build
-> mvn clean install
 
-
-# Create a new multimodule project
+# Create project
 > mvn archetype:generate -DarchetypeGroupId=io.github.jsoagger -DarchetypeArtifactId=jsoagger-fullstack-archetype -DarchetypeVersion=LATEST -DartifactId=helloWorld
  
  
@@ -26,5 +23,4 @@ Maven achertype for starting quickly a full stack Java application with spring b
 > docker-compose -f compose-dev.yaml up
 
 Browse http://localhost:3000/jsoagger/#c/login
-
 
