@@ -46,5 +46,3 @@ java -jar desktop/target/desktop-1.0.0-SNAPSHOT.jar --jsoagger.client.mode=deskt
 Mobile UI: java -jar desktop/target/desktop-1.0.0-SNAPSHOT.jar --jsoagger.client.mode=simul_mobile
 ```
 
-
-Mobile UI: java -jar desktop/target/desktop-1.0.0-SNAPSHOT.jar --jsoagger.client.mode=simul_mobile
