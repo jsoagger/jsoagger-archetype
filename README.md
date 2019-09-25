@@ -9,18 +9,42 @@ Maven achertype for starting quickly a full stack Java application with spring b
 
 
 # Create project
+
+```
 > mvn archetype:generate -DarchetypeGroupId=io.github.jsoagger -DarchetypeArtifactId=jsoagger-fullstack-archetype -DarchetypeVersion=LATEST -DartifactId=helloWorld
- 
+ ```
  
 # Build
+
+```
 > cd helloWorld
 > mvn clean install -P install-reactapp,npm-install
 > mvn clean install -P h2,docker
+```
 
 
 # Run with docker compose
 
+```
 > docker-compose -f compose-dev.yaml up
+```
+
+## Web application
 
 Browse http://localhost:3000/jsoagger/#c/login
 
+
+## Desktop application
+
+```
+java -jar desktop/target/desktop-1.0.0-SNAPSHOT.jar --jsoagger.client.mode=desktop
+```
+
+
+## Mobile application
+```
+Mobile UI: java -jar desktop/target/desktop-1.0.0-SNAPSHOT.jar --jsoagger.client.mode=simul_mobile
+```
+
+
+Mobile UI: java -jar desktop/target/desktop-1.0.0-SNAPSHOT.jar --jsoagger.client.mode=simul_mobile
