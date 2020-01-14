@@ -45,6 +45,8 @@ H2 url inside the web console must be : jdbc:h2:tcp://localhost/./_docker-compos
 java ./microservice/target/microservice-1.0.0-SNAPSHOT-sb.jar --spring.config.location=file:../_docker-compose/server/application-local.properties 
 ```
 
+The backend will connect to the database via url : jdbc:h2:tcp://localhost/./_docker-compose/data/foundation
+
 ## Run the front end
 
 The front end must be ran on top of the web folder:
