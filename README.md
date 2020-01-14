@@ -36,6 +36,8 @@ The artefact is delivered with ready to test h2 database, run it with the follow
 
 Be aware, you must run exactly above command, otherwise, h2 will not find the database file.
 
+H2 url inside the web console must be : jdbc:h2:tcp://localhost/./_docker-compose/data/foundation;MVCC=TRUE;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1
+
 
 ## Run the backend
 
