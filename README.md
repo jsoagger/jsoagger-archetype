@@ -8,15 +8,16 @@ Maven achertype for  quickly start full stack Java application development with 
 2. Install node.js
 3. Install JAVA 11
 
-# Create project
+ 
+# Create and run a project without docker container
 
-Create multi-module maven project with Jsoagger archetype:
+## Create a project
+
+Create multi-module maven project with JSoagger archetype:
 
 ```
 > mvn archetype:generate -DarchetypeGroupId=io.github.jsoagger -DarchetypeArtifactId=jsoagger-fullstack-archetype -DarchetypeVersion=LATEST -DartifactId=helloWorld
  ```
- 
-# Build and run the project without docker container
 
 Move into the newly created project and execute profile for installing node.js modules and react.js modules:
 
