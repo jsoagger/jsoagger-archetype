@@ -54,7 +54,7 @@ The front end must be ran on top of the web folder:
 > REACT_APP_BACKEND_HOST=http://localhost:8080/jsoagger/ npm start
 ```
 
-And browse the application at url: http://localhost:3000/jsoagger/#/login
+And browse the application at url: http://localhost:3000/#/login
 
 
 ## Run the mobile application
@@ -91,7 +91,7 @@ Create multi-module maven project with Jsoagger archetype:
 REACT_APP_BACKEND_HOST=http://localhost:8080/jsoagger/serv/core npm start
 ```
 
-And browse http://localhost:3000/jsoagger/#/login
+And browse http://localhost:3000/#/login
 
 ## Desktop application
 
