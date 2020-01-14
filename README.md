@@ -63,7 +63,7 @@ And browse the application at url: http://localhost:3000/#/login
 Mobile UI: java -jar mobile/target/mobile-1.0.0-SNAPSHOT.jar --jsoagger.client.mode=simul_mobile
 ```
 
-# Build and run the project docker container
+# Create and run a project with docker container
 
 In this case, docker desktop must be installed in your local environment.
 
@@ -99,7 +99,6 @@ And browse http://localhost:3000/#/login
 ```
 java -jar desktop/target/desktop-1.0.0-SNAPSHOT.jar --jsoagger.client.mode=desktop
 ```
-
 
 ## Mobile application
 ```
