@@ -9,7 +9,7 @@ Maven achertype for  quickly start full stack Java application development with 
 3. Install JAVA 11
 
  
-# Create and run a project without docker container
+# Project quick start
 
 ## Create a project
 
@@ -65,7 +65,10 @@ And browse the application at url: http://localhost:3000/#/login
 Mobile UI: java -jar mobile/target/mobile-1.0.0-SNAPSHOT.jar --jsoagger.client.mode=simul_mobile
 ```
 
-# Create and run a project with docker container
+
+
+
+# Project quick start with docker container
 
 In this case, docker desktop must be installed in your local environment.
 
