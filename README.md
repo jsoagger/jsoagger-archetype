@@ -31,7 +31,7 @@ Move into the newly created project and execute profile for installing node.js m
 The artefact is delivered with ready to test h2 database, run it with the following command:
 
 ```
-./_docker-compose/h2/bin/h2.sh
+./_docker-compose/h2/bin/h2.sh &
 ```
 
 Be aware, you must run exactly above command, otherwise, h2 will not find the database file.
