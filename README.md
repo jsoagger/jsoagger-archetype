@@ -32,6 +32,8 @@ The artefact is delivered with ready to test h2 database, run it with the follow
 
 ```
 > cd helloWorld
+
+> chmod 777 ./_docker-compose/h2/bin/h2.sh
 > ./_docker-compose/h2/bin/h2.sh &
 ```
 
