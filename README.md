@@ -31,18 +31,19 @@ Move into the newly created project and execute profile for installing node.js m
 The artefact is delivered with ready to test h2 database, run it with the following command:
 
 ```
-./_docker-compose/h2/bin/h2.sh &
+> cd helloWorld
+> ./_docker-compose/h2/bin/h2.sh &
 ```
 
-Be aware, you must run exactly above command, otherwise, h2 will not find the database file.
-
-H2 url inside the web console must be : jdbc:h2:tcp://localhost/foundation;MVCC=TRUE;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1
+Be aware, you must run exactly above command (under helloWorld directory), otherwise, h2 will not find the database file.
 
 
 ## Run the backend
 
 ```
-java -jar ./microservice/target/microservice-1.0.0-SNAPSHOT-sb.jar --spring.config.location=file:_docker-compose/server/application-local.properties 
+> cd helloWorld
+
+> java -jar ./microservice/target/microservice-1.0.0-SNAPSHOT-sb.jar --spring.config.location=file:_docker-compose/server/application-local.properties 
 ```
 
 ## Run the front end
@@ -50,7 +51,7 @@ java -jar ./microservice/target/microservice-1.0.0-SNAPSHOT-sb.jar --spring.conf
 The front end must be ran on top of the web folder:
 
 ```
-> cd web
+> cd helloWorld/web
 ```
 
 ```
@@ -61,8 +62,10 @@ And browse the application at url: http://localhost:3000/#/login
 
 
 ## Run the mobile application
+
 ```
-Mobile UI: java -jar mobile/target/mobile-1.0.0-SNAPSHOT.jar --jsoagger.client.mode=simul_mobile
+> cd helloWorld
+> java -jar mobile/target/mobile-1.0.0-SNAPSHOT.jar --jsoagger.client.mode=simul_mobile
 ```
 
 
