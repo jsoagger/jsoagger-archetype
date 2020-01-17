@@ -79,10 +79,10 @@ And browse the application at url: http://localhost:3000/#/login
 
 ```
 > cd helloWorld
-> mvn clean install -P install-reactapp,npm-install 
 ```
 
-Build the docker containers
+Build the docker containers:
+
 ```
 > mvn clean install -P h2,docker
 ```
