@@ -121,9 +121,94 @@ Mobile UI: java -jar mobile/target/mobile-1.0.0-SNAPSHOT.jar --jsoagger.client.m
 Add following XML fragment inside pom.xml of web module
 
 ```
-
+<profile>
+			<id>install-soaggyshop-web</id>
+			<properties>
+				<skip.docker.build>true</skip.docker.build>
+			</properties>	
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>unpack</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>io.github.jsoagger</groupId>
+											<artifactId>soaggyshop-web</artifactId>
+											<version>1.0.0-SNAPSHOT</version>
+											<outputDirectory>${project.build.directory}/soaggyshop-src</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>3.1.0</version>
+						<executions>
+							<execution>
+								<id>copy-public-content</id>
+								<phase>process-classes</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${basedir}/public</outputDirectory>
+									<encoding>UTF-8</encoding>
+									<resources>
+										<resource>
+											<directory>${project.build.directory}/soaggyshop-src/_public</directory>
+											<includes>
+												<include>**/*.*</include>
+												<include>**/*.json</include>
+												<include>**/*.css</include>
+												<include>**/*.scc</include>
+												<include>**/*.scss</include>												
+												<include>**/assets/**</include>
+											</includes>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+							<execution>
+								<id>copy-soaggyShopSrc</id>
+								<phase>process-classes</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${basedir}/src</outputDirectory>
+									<encoding>UTF-8</encoding>
+									<resources>
+										<resource>
+											<directory>${project.build.directory}/soaggyshop-src/_src</directory>
+											<includes>
+												<include>**/*</include>
+												<include>**/*.js</include>												
+												<include>**/*.json</include>
+												<include>**/*.css</include>
+												<include>**/*.scc</include>
+												<include>**/*.scss</include>												
+											</includes>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 ```
-
 
 
 ## Mobile ecommerce UI
@@ -135,19 +220,20 @@ Add following fragment inside pom.xml mobile module
 ```
 
 
-
 ## Build
 
 ```
-> mvn clean install
+> mvn clean install -P install-soaggyshop-web
 ```
 
 ## Run ecommerce applications
 
 Web : 
 ````
-> 
+> REACT_APP_BACKEND_HOST=http://localhost:8080/jsoagger/serv/core npm start
 ````
+
+And browse the application at url: http://localhost:3000/#/login
 
 Mobile:
 ```
