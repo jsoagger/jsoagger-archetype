@@ -113,3 +113,45 @@ java -jar desktop/target/desktop-1.0.0-SNAPSHOT.jar --jsoagger.client.mode=deskt
 Mobile UI: java -jar mobile/target/mobile-1.0.0-SNAPSHOT.jar --jsoagger.client.mode=simul_mobile
 ```
 
+
+# Add ECommerce module example
+
+## Web ecommerce UI
+
+Add following XML fragment inside pom.xml of web module
+
+```
+
+```
+
+
+
+## Mobile ecommerce UI
+
+Add following fragment inside pom.xml mobile module
+
+```
+
+```
+
+
+
+## Build
+
+```
+> mvn clean install
+```
+
+## Run ecommerce applications
+
+Web : 
+````
+> 
+````
+
+Mobile:
+```
+>
+```
+
+
