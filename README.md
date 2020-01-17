@@ -42,7 +42,7 @@ H2 url inside the web console must be : jdbc:h2:tcp://localhost/foundation;MVCC=
 ## Run the backend
 
 ```
-java ./microservice/target/microservice-1.0.0-SNAPSHOT-sb.jar --spring.config.location=file:../_docker-compose/server/application-local.properties 
+java -jar ./microservice/target/microservice-1.0.0-SNAPSHOT-sb.jar --spring.config.location=file:_docker-compose/server/application-local.properties 
 ```
 
 ## Run the front end
