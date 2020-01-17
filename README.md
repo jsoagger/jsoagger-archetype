@@ -209,6 +209,13 @@ Add following XML fragment inside pom.xml of web module
 			</build>
 		</profile>
 ```
+### Run web ecommerce application
+
+````
+> REACT_APP_BACKEND_HOST=http://localhost:8080/jsoagger/serv/core npm start
+````
+
+And browse the application at url: http://localhost:3000/#/login
 
 
 ## Mobile ecommerce UI
@@ -226,14 +233,7 @@ Add following fragment inside pom.xml mobile module
 > mvn clean install -P install-soaggyshop-web
 ```
 
-## Run ecommerce applications
 
-Web : 
-````
-> REACT_APP_BACKEND_HOST=http://localhost:8080/jsoagger/serv/core npm start
-````
-
-And browse the application at url: http://localhost:3000/#/login
 
 Mobile:
 ```
