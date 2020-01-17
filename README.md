@@ -73,24 +73,22 @@ And browse the application at url: http://localhost:3000/#/login
 
 
 
-# Project quick start with docker container
-
-In this case, docker desktop must be installed in your local environment.
-
-Create multi-module maven project with Jsoagger archetype:
-
-```
-> mvn archetype:generate -DarchetypeGroupId=io.github.jsoagger -DarchetypeArtifactId=jsoagger-fullstack-archetype -DarchetypeVersion=LATEST -DartifactId=helloWorld
-```
+# Dockerize the application
 
 ## Build the project
+
 ```
 > cd helloWorld
-> mvn clean install -P install-reactapp,npm-install
+> mvn clean install -P install-reactapp,npm-install 
+```
+
+Build the docker containers
+```
 > mvn clean install -P h2,docker
 ```
 
-## Launch them with docker-compose
+
+## Start the backend and the database with docker-compose
 
 ```
 > docker-compose -f compose-dev.yaml up
