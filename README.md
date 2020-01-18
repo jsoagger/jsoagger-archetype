@@ -209,6 +209,26 @@ Add following XML fragment inside pom.xml of web module
 			</build>
 		</profile>
 ```
+### Install ecommerce module
+
+Run followig command:
+
+```
+> cd helloworld/web
+
+> mvn clean install -P install-soaggyshop-web
+```
+
+### Add soaggy shop components to React.js route
+
+Edit package.json replace start and build sections by following content:
+
+```
+"start": "NODE_PATH=src/:src/_components:src/_actions:src/_helpers:src/_reducers:src/_services:src/_components:src/_soaggyShopComponents:src/_soaggyShopContainers:src/_soaggyShopPages:src/_soaggyShopReducers:src/containers:src/pages react-scripts start",
+"build": "src/:src/_components:src/_actions:src/_helpers:src/_reducers:src/_services:src/_components:src/_soaggyShopComponents:src/_soaggyShopContainers:src/_soaggyShopPages:src/_soaggyShopReducers:src/containers:src/pages react-scripts build",
+```
+
+
 ### Run web ecommerce application
 
 ````
@@ -222,22 +242,12 @@ And browse the application at url: http://localhost:3000/#/login
 
 Add following fragment inside pom.xml mobile module
 
-```
+
+
+## Mobile ecommerce UI
 
 ```
-
-
-## Build
-
-```
-> mvn clean install -P install-soaggyshop-web
-```
-
-
-
-Mobile:
-```
->
+> mvn clean install -P install-soaggyshop-mobile
 ```
 
 
