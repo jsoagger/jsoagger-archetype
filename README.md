@@ -240,14 +240,37 @@ And browse the application at url: http://localhost:3000/#/login
 
 ## Mobile ecommerce UI
 
-Add following fragment inside pom.xml mobile module
+The mobile UI is based on JavaFX 11 and our custome ecommerce library.
 
+### Modify the pom.xml
 
+Modify the pom.ml of mobile application like following:
 
-## Mobile ecommerce UI
+1. Add following dependency
 
 ```
-> mvn clean install -P install-soaggyshop-mobile
+<dependency>
+	<groupId>io.github.jsoagger</groupId>
+	<artifactId>soaggyshop-mobile</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+</dependency>
 ```
 
+2. Add following property
+
+```
+<fully.qualified.main.class>io.github.jsoagger.soaggyshop.beanproviders.mobile.MobileApplicationLauncher</fully.qualified.main.class>
+```
+
+### Build the project
+
+```
+> mvn clean install
+```
+
+## Run mobile ecommerce UI
+
+```
+> java --module-path ./target/libs/ --add-modules=javafx.controls,javafx.graphics,javafx.fxml --add-opens=javafx.graphics/com.sun.javafx.css=ALL-UNNAMED  -jar target/mobile-1.0.0-SNAPSHOT.jar --jsoagger.client.mode=simul_mobile
+```
 
