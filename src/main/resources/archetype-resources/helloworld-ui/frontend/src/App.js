@@ -15,7 +15,7 @@ const LoginLayout = React.lazy(() => import('./containers/Core/LoginLayout'));
 
 // history
 export const browserHistory = createBrowserHistory();
-
+const backendRootContext = process.env.REACT_APP_CONTEXT_ROOT;
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
 /**
@@ -93,15 +93,15 @@ class App extends Component {
                     )}
             	/>
             	<Route exact path="/login" name="Login" render={props => <LoginLayout {...props}/>} />
-            	<Route path="/helloworld/lostPass" name="Lost password" component={LoginLayout} />
-            	<Route path="/helloworld" name="Accueil" component={GenericHomeLayout} />            	
-            	<Route path="/helloworld/admin" name="Admin" component={GenericHomeLayout} />
-            	<Route path="/helloworld/desktop" name="Demo desktop" component={GenericHomeLayout} />
-            	<Route path="/helloworld/mobile" name="Demo mobile" component={GenericHomeLayout} />
-            	<Route path="/helloworld/profile/:accountId" name="Demo profile" component={GenericHomeLayout} />
-            	<Route path="/400" name="Not found" component={AnonLayout} />
-            	<Route path="/500" name="Error" component={AnonLayout} />
-            	<Route path="*" name="Unkown" component={AnonLayout} />
+            	<Route path={'/' + backendRootContext + '/admin'} exact name="Admin" component={AdminLayout} />
+            	<Route path={'/' + backendRootContext + '/lostPass'} name="Lost password" component={LoginLayout} />
+            	<Route path={'/' + backendRootContext} name="Accueil" component={GenericHomeLayout} />            	
+            	<Route path={'/' + backendRootContext + '/desktop'} exact name="Demo desktop" component={GenericHomeLayout} />
+            	<Route path={'/' + backendRootContext + '/mobile'} exact name="Demo mobile" component={GenericHomeLayout} />
+            	<Route path={'/' + backendRootContext + '/profile/:accountId'} name="Demo profile" component={GenericHomeLayout} />
+            	<Route path='/400' name="Not found" component={AnonLayout} />
+            	<Route path='/500' name="Error" component={AnonLayout} />
+            	<Route path='*' name="Unkown" component={AnonLayout} />
             </Switch>
           </React.Suspense>
       </HashRouter>

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import demoRoutes from './demoRoutes';
+import helloWorldRoutes from './helloWorldRoutes';
 import commonRoutes from './commonRoutes';
 
-const allRoutes = demoRoutes.concat(commonRoutes)
+const allRoutes = helloWorldRoutes.concat(commonRoutes)
 
 export default allRoutes;
 

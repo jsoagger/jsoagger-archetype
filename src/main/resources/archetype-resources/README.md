@@ -94,7 +94,7 @@ Launch node server:
 ```
 
 
-# Enjoy
+# Enjoy it
 
 http://localhost:3000/
 
