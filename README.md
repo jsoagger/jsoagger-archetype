@@ -67,9 +67,9 @@ Copy javascript files:
 ```
 > cd helloworld-ui
 
-> mvn install -P install-coreui
+> mvn clean install -P install-coreui
 
-> npm install -P copy-frontend
+> mvn install -P copy-frontend
 
 ```
 
@@ -90,12 +90,24 @@ Launch node server:
 ```
 
 
-# Enjoy
+# Enjoy it
 
 http://localhost:3000/
 
 http://localhost:81/login.jsp
 
 
+
+# Deploy to AWS
+
+TODO
+
+# Deploy to GCP
+
+TODO
+
+# Deploy to Azure
+
+TODO
 
 
