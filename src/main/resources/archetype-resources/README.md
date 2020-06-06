@@ -73,7 +73,7 @@ Copy javascript files:
 
 > mvn clean install -P install-coreui
 
-> npm install -P copy-frontend
+> mvn install -P copy-frontend
 
 ```
 
@@ -89,7 +89,7 @@ Install npm dependies:
 Launch node server:
 
 ```
-> REACT_APP_CONTEXT_ROOT=helloworld npm start
+> package.json
 
 ```
 
