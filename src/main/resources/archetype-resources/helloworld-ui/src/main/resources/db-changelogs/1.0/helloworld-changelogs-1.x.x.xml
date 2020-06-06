@@ -1,0 +1,53 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd 
+   http://www.liquibase.org/xml/ns/dbchangelog 
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<changeSet author="helloworld-user" id="1">
+		<comment>Create table SC_MODEL</comment>
+		<createTable tableName="SC_MODEL">
+			<column name="OID" type="BIGINT">
+				 <constraints primaryKey="true"/>
+			</column>
+			<column name="modelName" type="varchar(255)">
+				 <constraints nullable="false" />
+			</column>
+			<column name="CREATE_DATE" type="TIMESTAMP">
+				 <constraints nullable="false" />
+			</column>
+			<column name="CREATEDBY" type="varchar(255)">
+				 <constraints nullable="false" />
+			</column>
+			<column name="LASTMODIFIEDBY" type="varchar(255)">
+				 <constraints nullable="false" />
+			</column>
+			<column name="MODIFIED_DATE" type="TIMESTAMP">
+				 <constraints nullable="false" />
+			</column>
+			<column name="VERSION" type="BIGINT">
+				 <constraints nullable="false" />
+			</column>
+			<column name="CONTAINER_OID" type="varchar(255)">
+				 <constraints nullable="false" />
+			</column>
+		</createTable>
+		
+		<insert tableName="SC_MODEL">
+			<column name="OID" value="1"/>
+			<column name="modelName" value="Hello world!"/>
+			<column name="LASTMODIFIEDBY" value="epadmin"/>
+			<column name="CREATEDBY" value="epadmin"/>
+			<column name="VERSION" value="1"/>
+			<column name="CONTAINER_OID" value="1"/>
+			<column name="MODIFIED_DATE" value="now()"/>
+			<column name="CREATE_DATE" value="now()"/>
+		</insert>
+	</changeSet>
+</databaseChangeLog>

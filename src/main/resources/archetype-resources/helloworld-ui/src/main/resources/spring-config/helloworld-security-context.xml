@@ -1,0 +1,113 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context.xsd
+                http://www.springframework.org/schema/aop
+                http://www.springframework.org/schema/aop/spring-aop.xsd
+                http://www.springframework.org/schema/tx
+       	 		http://www.springframework.org/schema/tx/spring-tx.xsd
+                http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<bean id="shiroFilter"
+		class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/fake-home-for-debug-login" />
+		<property name="successUrl" value="/home" />
+		<property name="unauthorizedUrl" value="/404" />
+		<property name="filterChainDefinitions">
+			<value></value>
+		</property>
+	</bean>
+	
+	<bean id="securityManager"
+		class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="sessionManager" ref="sessionManager" />
+		<property name="cacheManager" ref="shiroCacheManager" />
+		<property name="realms">
+			<list>
+				<ref bean="AuthenticationService" />
+			</list>
+		</property>
+		<property name="authenticator.authenticationStrategy">
+			<bean class="org.apache.shiro.authc.pam.FirstSuccessfulStrategy" />
+		</property>
+	</bean>
+
+	<bean id="sessionIdGenerator" class="io.github.jsoagger.core.server.dao.utils.JsoaggerSessionIdGenerator" />
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+	<bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+		<constructor-arg value="sid" />
+		<property name="httpOnly" value="true" />
+		<property name="maxAge" value="180000" />
+	</bean>
+
+	<bean id="sessionManager"
+		class="io.github.jsoagger.core.server.service.rest.utils.JSoaggerSessionManager">
+		<property name="globalSessionTimeout" value="1800000" />
+		<property name="deleteInvalidSessions" value="true" />
+		<property name="sessionValidationSchedulerEnabled"
+			value="false" />
+		<!-- <property name="sessionValidationScheduler" ref="sessionValidationScheduler" 
+			/> -->
+		<property name="sessionDAO" ref="sessionDAO" />
+		<property name="sessionIdCookieEnabled" value="true" />
+		<property name="sessionIdCookie" ref="sessionIdCookie" />
+	</bean>
+
+
+	<bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
+		<property name="activeSessionsCacheName" value="shiro-activeSessionCache" />
+		<property name="sessionIdGenerator" ref="sessionIdGenerator" />
+	</bean>
+
+	<!-- Let's use some enterprise caching support for better performance. You 
+		can replace this with any enterprise caching framework implementation that 
+		you like (Terracotta+Ehcache, Coherence, GigaSpaces, etc -->
+	<bean id="shiroCacheManager"
+		class="org.apache.shiro.cache.MemoryConstrainedCacheManager">
+		<!-- Set a net.sf.ehcache.CacheManager instance here if you already have 
+			one. If not, a new one will be creaed with a default config: <property name="cacheManager" 
+			ref="ehCacheManager"/> -->
+		<!-- If you don't have a pre-built net.sf.ehcache.CacheManager instance 
+			to inject, but you want a specific Ehcache configuration to be used, specify 
+			that here. If you don't, a default will be used.: <property name="cacheManagerConfigFile" 
+			value="classpath:some/path/to/ehcache.xml"/> -->
+	</bean>
+
+	<!-- Secure Spring remoting: Ensure any Spring Remoting method invocations 
+		can be associated with a Subject for security checks. -->
+	<bean id="secureRemoteInvocationExecutor"
+		class="org.apache.shiro.spring.remoting.SecureRemoteInvocationExecutor">
+		<property name="securityManager" ref="securityManager" />
+	</bean>
+
+	<!-- Enable Shiro Annotations for Spring-configured beans. Only run after -->
+	<!-- the lifecycleBeanProcessor has run: <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" 
+		depends-on="lifecycleBeanPostProcessor"> <property name="proxyTargetClass" 
+		value="true" /> </bean> -->
+
+	<bean
+		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager" />
+	</bean>
+	
+	<bean id="credentialMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+        <property name="hashAlgorithmName" value="SHA-256" />
+        <property name="hashIterations" value="200" />
+        <property name="hashSalted" value="true" />
+    </bean>
+    
+    <bean id="AuthenticationService" class="${groupId}.core.server.service.local.impl.AuthenticationService">
+        <property name="credentialsMatcher" ref="credentialMatcher" />
+    </bean>
+</beans>

@@ -1,0 +1,38 @@
+version: '3.7'
+services:
+  helloworld-ui:
+    image: jsoagger/helloworld-ui:${test.docker.images.version}
+    container_name: helloworld-ui 
+    networks:
+      - test_network
+    ports:
+      - 8080:8080
+    depends_on:
+      - helloworldbd   
+    volumes:
+      - $SPRING_CONFIG_SERVER_LOCATION:/spring-config/:ro
+
+  helloworldbd:
+    image: jsoagger/h2:latest
+    container_name: helloworldbd
+    networks:
+      - test_network    
+    volumes:
+       - helloworld_data_volume:/opt/h2-data:rw
+    environment:
+      - DB_USER=$DB_USER
+      - DB_PASSWORD=$DB_PASSWORD
+    ports:
+      - 1521:1521
+      - 81:81
+
+networks:
+  test_network:
+    external:
+      name: test_network
+     
+volumes:
+  helloworld_data_volume:
+    external:
+      name: helloworld_data_volume
+      

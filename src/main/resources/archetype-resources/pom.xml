@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ========================LICENSE_START================================= 
+	JSoagger  %% Copyright (C) 2019 JSOAGGER %% Licensed under the Apache 
+	License, Version 2.0 (the "License"); you may not use this file except in 
+	compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+	Unless required by applicable law or agreed to in writing, software distributed 
+	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
+	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+	the specific language governing permissions and limitations under the License. 
+	=========================LICENSE_END================================== --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>${groupId}</groupId>
+	<artifactId>${artifactId}</artifactId>
+	<version>${version}</version>
+	<packaging>pom</packaging>
+
+	<packaging>pom</packaging>
+	<name>Jsoagger template</name>
+	<description>JSoagger project template</description>
+	
+	<modules>
+		<module>helloworld-ui</module>
+	</modules>
+
+	<organization>
+		<name>JSOAGGER</name>
+		<url>www.jsoagger.tech</url>
+	</organization>
+	<url>https://github.com/jsoagger</url>
+
+	<properties>
+		<internal.core.project.version>1.0.22</internal.core.project.version>
+		<jsoagger-corebusiness-services.version>1.0.17</jsoagger-corebusiness-services.version>
+		<test.docker.images.version>${project.version}</test.docker.images.version>
+		<jsoagger-manager-version>1.0.11</jsoagger-manager-version>
+		<junit.verion>4.12</junit.verion>
+		<docker.compose.rule.version>0.31.1</docker.compose.rule.version>
+		<maven.clean.version>3.0.0</maven.clean.version>
+		<maven.compiler.plugin>3.8.0</maven.compiler.plugin>
+		<docker.maven.plugin.version>1.4.9</docker.maven.plugin.version>
+		<springframework.boot.version>2.1.2.RELEASE</springframework.boot.version>
+		<mockito-all.version>1.9.5</mockito-all.version>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<camel.xstream.version>2.21.0</camel.xstream.version>
+		<xstream.version>1.4.10</xstream.version>
+		<timestamp>${maven.build.timestamp}</timestamp>
+		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
+		<jsoagger-corebusiness-services.version>1.0.17</jsoagger-corebusiness-services.version>
+		<maven-failsafe-plugin.version>2.18</maven-failsafe-plugin.version>
+		<hibernate.version>5.4.0.Final</hibernate.version>
+		<hibernate-common-annotations.version>5.0.1.Final</hibernate-common-annotations.version>
+		<hibernate.orm.version>5.4.0.Final</hibernate.orm.version>
+		<springframework.boot.version>2.1.2.RELEASE</springframework.boot.version>
+		<mvel.version>2.4.0.Final</mvel.version>
+		<spring.shell.version>2.0.0.RELEASE</spring.shell.version>
+		<bootstrap.version>4.2.1</bootstrap.version>
+		<javax.annotation.version>1.2</javax.annotation.version>
+		<javaee.api.version>8.0</javaee.api.version>
+		<javax.ejb.version>3.1</javax.ejb.version>
+		<javax.inject>1</javax.inject>
+		<xml.combiner.version>2.2</xml.combiner.version>
+		<apache.batik>1.9</apache.batik>
+		<commons.validator.version>1.6</commons.validator.version>
+		<annotation.discovery.version>1.7</annotation.discovery.version>
+		<common.beanutils.version>1.9.3</common.beanutils.version>
+		<saxon.dom.version>8.7</saxon.dom.version>
+		<commons.io.version>2.6</commons.io.version>
+		<commons.lang.version>3.8.1</commons.lang.version>
+		<commons.collection>4.1</commons.collection>
+		<log4j-core.version>2.11.1</log4j-core.version>
+		<junit.version>4.11</junit.version>
+		<common.dbcp.version>1.2.2</common.dbcp.version>
+		<org.slf4j.version>1.6.0</org.slf4j.version>
+		<commons-lang.version>2.3</commons-lang.version>
+		<com.jolbox.version>0.7.1.RELEASE</com.jolbox.version>
+		<com.querydsl.version>3.7.4</com.querydsl.version>
+		<querydsl-core.version>3.7.4</querydsl-core.version>
+		<org.codehaus.jackson.version>1.9.13</org.codehaus.jackson.version>
+		<maven-ejb-plugin.version>2.3</maven-ejb-plugin.version>
+		<hamcrest-all.version>1.3</hamcrest-all.version>
+		<commons-codec-version>1.10</commons-codec-version>
+		<commons-validator.version>1.3.0</commons-validator.version>
+		<xmlbeans-xpath.version>2.6.0</xmlbeans-xpath.version>
+		<org.reflections.version>0.9.11</org.reflections.version>
+		<apache.tika.core.version>1.20</apache.tika.core.version>
+		<h2.database.version>1.4.187</h2.database.version>
+		<spring.batch.version>3.0.7.RELEASE</spring.batch.version>
+		<spring.httpinvoker.version>2.0.6.RELEASE</spring.httpinvoker.version>
+		<spring.version>5.1.0.RELEASE</spring.version>
+		<shiro.all.version>1.4.0</shiro.all.version>
+		<jackson.annotation.version>2.9.7</jackson.annotation.version>
+		<hibernate.version>5.4.0.Final</hibernate.version>
+		<hibernate.orm.version>5.4.0.Final</hibernate.orm.version>
+		<jackson.annotations.version>2.9.8</jackson.annotations.version>
+		<apache.shiro.version>1.3.2</apache.shiro.version>
+		<eh.cache.version>2.10.4</eh.cache.version>
+		<tomcat.version>8.0.8</tomcat.version>
+		<javassist.version>3.23.1-GA</javassist.version>
+		<activation.version>1.1.1</activation.version>
+
+		<java.javaee-api.version>8.0</java.javaee-api.version>
+		<saxon.version>8.7</saxon.version>
+		<cglib.version>3.2.7</cglib.version>
+		<spring.core.version>5.1.0.RELEASE</spring.core.version>
+		<resource4j.version>3.2.0</resource4j.version>
+		<gson.version>2.8.6</gson.version>
+		<annovention.version>1.7</annovention.version>
+		<okhttp.version>2.7.5</okhttp.version>
+		<commons-io.version>2.5</commons-io.version>
+		<commons-fileupload.version>1.3.3</commons-fileupload.version>
+		<commons-collections.version>3.2.2</commons-collections.version>
+		<log4j.version>1.2.17</log4j.version>
+		<dom4j.version>1.6.1</dom4j.version>
+		<antlr.version>2.7.7</antlr.version>
+		<hibernate-jpa-api.version>1.0.0.Final</hibernate-jpa-api.version>
+		<shiro-web.version>1.3.2</shiro-web.version>
+		<shiro-guice.version>1.3.2</shiro-guice.version>
+		<ibatis-common.version>1.3.1</ibatis-common.version>
+
+		<maven.lifecycle-mapping>1.0.0</maven.lifecycle-mapping>
+		<build-helper-maven-plugin.version>1.9.1</build-helper-maven-plugin.version>
+		<maven-failsafe-plugin.version>2.18</maven-failsafe-plugin.version>
+		<spring-boot-maven-plugin.version>2.2.2.RELEASE</spring-boot-maven-plugin.version>
+		<maven-licence-plugin.version>1.16</maven-licence-plugin.version>
+		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
+		<maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+		<exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
+		<versions-maven-plugin.version>2.7</versions-maven-plugin.version>
+		<maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
+		<maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
+		<maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+		<maven.eclipse.plugin.version>2.10</maven.eclipse.plugin.version>
+		<maven.frontend-maven-plugin.version>1.6</maven.frontend-maven-plugin.version>
+		<maven.apt-plugin.version>1.1.3</maven.apt-plugin.version>
+		<node.version>v12.10.0</node.version>
+		<npm.version>6.11.3</npm.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<java.version>11</java.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<!-- Import dependency management from Spring Boot -->
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${springframework.boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>io.github.jsoagger</groupId>
+				<artifactId>jsoagger-corebusiness-services</artifactId>
+				<version>${jsoagger-corebusiness-services.version}</version>
+				<classifier>lib</classifier>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.castor</groupId>
+				<artifactId>castor</artifactId>
+				<version>1.2</version><!--$NO-MVN-MAN-VER$ -->
+			</dependency>
+			<dependency>
+				<groupId>io.github.jsoagger</groupId>
+				<artifactId>jsoagger-core-bridge</artifactId>
+				<version>${internal.core.project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.jsoagger</groupId>
+				<artifactId>jsoagger-core-utils</artifactId>
+				<version>${internal.core.project.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.javassist</groupId>
+						<artifactId>javassist</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.annotation</groupId>
+				<artifactId>javax.annotation-api</artifactId>
+				<version>${javax.annotation.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>cglib</groupId>
+				<artifactId>cglib</artifactId>
+				<version>3.2.5</version>
+			</dependency>
+			<dependency>
+				<groupId>com.squareup.okhttp</groupId>
+				<artifactId>okhttp</artifactId>
+				<version>${okhttp.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-api</artifactId>
+				<version>2.11.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-core</artifactId>
+				<version>2.11.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-slf4j-impl</artifactId>
+				<version>2.11.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.inject</groupId>
+				<artifactId>javax.inject</artifactId>
+				<version>${javax.inject}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.saxon</groupId>
+				<artifactId>saxon-dom</artifactId>
+				<version>${saxon.dom.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.atteo</groupId>
+				<artifactId>xml-combiner</artifactId>
+				<version>${xml.combiner.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>${gson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>${common.beanutils.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>tv.cntt</groupId>
+				<artifactId>annovention</artifactId>
+				<version>${annovention.version}</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.javassist/javassist -->
+			<dependency>
+				<groupId>org.javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>${javassist.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-api</artifactId>
+				<version>${javaee.api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.json-lib</groupId>
+				<artifactId>json-lib</artifactId>
+				<version>2.4</version>
+				<classifier>jdk15</classifier>
+			</dependency>
+
+			<!-- Apache shiro -->
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-core</artifactId>
+				<version>${apache.shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-spring</artifactId>
+				<version>${apache.shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-web</artifactId>
+				<version>${shiro-web.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-guice</artifactId>
+				<version>${shiro-guice.version}</version>
+			</dependency>
+
+			<!--EH cache for hibernate, jpa, shiro and other caching -->
+			<dependency>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache</artifactId>
+				<version>${eh.cache.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-ehcache</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+
+
+			<!-- Spring castor -->
+			<dependency>
+				<groupId>org.codehaus.castor</groupId>
+				<artifactId>castor</artifactId>
+				<version>1.4.1</version>
+			</dependency>
+			<dependency>
+				<groupId>xerces</groupId>
+				<artifactId>xercesImpl</artifactId>
+				<version>2.11.0</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.mail</groupId>
+				<artifactId>mail</artifactId>
+				<version>1.4</version>
+			</dependency>
+
+			<!-- other dependencies -->
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-jaxrs</artifactId>
+				<version>${org.codehaus.jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons-lang.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${commons-codec-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-validator</groupId>
+				<artifactId>commons-validator</artifactId>
+				<version>${commons-validator.version}</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.xmlbeans</groupId>
+				<artifactId>xmlbeans-xpath</artifactId>
+				<version>${xmlbeans-xpath.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>net.sf.saxon</groupId>
+						<artifactId>saxon</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.reflections</groupId>
+				<artifactId>reflections</artifactId>
+				<version>${org.reflections.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>${jackson.annotations.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.annotations.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.tika</groupId>
+				<artifactId>tika-core</artifactId>
+				<version>${apache.tika.core.version}</version>
+			</dependency>
+
+			<!-- Do not include implementation to avoid conflict, because some container 
+				provide their own implementation -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${org.slf4j.version}</version>
+			</dependency>
+
+			<!-- Query DSL for data access -->
+			<dependency>
+				<groupId>com.mysema.querydsl</groupId>
+				<artifactId>querydsl-core</artifactId>
+				<version>${com.querydsl.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.mysema.querydsl</groupId>
+				<artifactId>querydsl-apt</artifactId>
+				<version>${com.querydsl.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.mysema.querydsl</groupId>
+				<artifactId>querydsl-jpa</artifactId>
+				<version>${com.querydsl.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.mysema.querydsl</groupId>
+				<artifactId>querydsl-sql</artifactId>
+				<version>${com.querydsl.version}</version>
+			</dependency>
+
+			<!-- Servlet -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>2.5</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>2.1</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>1.2</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- VElocity integration -->
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity-tools</artifactId>
+				<version>2.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity</artifactId>
+				<version>1.7</version>
+			</dependency>
+
+			<!-- For testing dependencies -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>hamcrest-core</artifactId>
+						<groupId>org.hamcrest</groupId>
+					</exclusion>
+				</exclusions>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-all</artifactId>
+				<version>${hamcrest-all.version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<distribution>repo</distribution>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+		</license>
+	</licenses>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<release>${java.version}</release>
+					<source>11</source>
+					<target>11</target>
+					<showWarnings>true</showWarnings>
+					<showDeprecation>true</showDeprecation>
+					<fork>true</fork>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<repositories>
+		<repository>
+			<id>central</id>
+			<name>Maven Repository Switchboard</name>
+			<layout>default</layout>
+			<url>https://repo1.maven.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>jboss.org</id>
+			<name>JBoss Repository</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/libs-milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>docker-compose</id>
+			<name>Docker compose</name>
+			<url>https://dl.bintray.com/palantir/releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>oss-sonatype</id>
+			<name>oss-sonatype</name>
+			<url>https://oss.sonatype.org/content/repositories/releases/</url>
+			<snapshots>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>nexitia.com</id>
+			<name>Nexitia releases</name>
+			<url>http://nexus.nexitia.com/repository/nexitia-releases/</url>
+			<snapshots>
+				<checksumPolicy>ignore</checksumPolicy>
+			</snapshots>
+			<releases>
+				<checksumPolicy>ignore</checksumPolicy>
+			</releases>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>central</id>
+			<name>Maven Plugin Repository</name>
+			<url>https://repo1.maven.org/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+
+		<pluginRepository>
+			<id>synergian-repo</id>
+			<url>https://raw.github.com/synergian/wagon-git/releases</url>
+		</pluginRepository>
+
+		<pluginRepository>
+			<id>Gluon</id>
+			<url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
+		</pluginRepository>
+	</pluginRepositories>
+	
+	<developers>
+		<developer>
+			<name>Ramilafananana VONJISOA</name>
+			<email>yvonjisoa@nexitia.com</email>
+			<organizationUrl>http://www.nexitia.com</organizationUrl>
+		</developer>
+	</developers>
+</project>

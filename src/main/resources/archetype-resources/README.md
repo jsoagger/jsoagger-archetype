@@ -13,7 +13,7 @@ Install following software:
 4. Docker desktop
  
  
-# Generate a web project
+# Configure maven
 
 Add Nexitia's maven public repository in your maven settings:
 
@@ -34,12 +34,6 @@ Add Nexitia's maven public repository in your maven settings:
 </repository>
 ```
  
-Generate a project:
-
-```
-> mvn archetype:generate -DarchetypeGroupId=io.github.jsoagger -DarchetypeArtifactId=jsoagger-web-archetype -DarchetypeVersion=LATEST -DartifactId=helloWorld
-
-```
 
 # Build
 

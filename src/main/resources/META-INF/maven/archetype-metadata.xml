@@ -28,6 +28,7 @@
     <module id="helloworld-ui" dir="helloworld-ui" name="helloworld-ui">
       <fileSets>
       	<fileSet filtered="true" packaged="false" encoding="UTF-8">
+      		<directory></directory>
       		<includes>
       			<include>Dockerfile</include>
       		</includes>
