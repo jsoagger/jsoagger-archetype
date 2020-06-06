@@ -12,6 +12,10 @@
 	<name>JSoagger web project archetype</name>
 	<description>JSoagger Quick Start</description>
 	<url>http://www.jsoagger.tech/</url>
+	
+	<properties>
+		<project.scm.id>jsoaggercore.repo</project.scm.id>
+	</properties>
 
 	<build>
 		<pluginManagement>
@@ -104,9 +108,9 @@
 	</licenses>
 
 	<scm>
-		<connection>scm:git:https://github.com/jsoagger/jsoagger.git</connection>
-		<developerConnection>scm:git:https://github.com/jsoagger/jsoagger.git</developerConnection>
-		<url>https://github.com/jsoagger/jsoagger.git</url>
+		<connection>scm:git:https://github.com/jsoagger/jsoagger-archetype.git</connection>
+		<developerConnection>scm:git:https://github.com/jsoagger/jsoagger-archetype.git</developerConnection>
+		<url>https://github.com/jsoagger/jsoagger</url>
 		<tag>HEAD</tag>
 	</scm>
 
