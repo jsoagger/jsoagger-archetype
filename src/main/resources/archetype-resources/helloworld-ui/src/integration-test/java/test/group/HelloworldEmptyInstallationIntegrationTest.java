@@ -6,4 +6,4 @@
  */
 package ${package}.test.group;
 
-public interface HermesEmptyInstallationIntegrationTest {}
+public interface HelloworldEmptyInstallationIntegrationTest {}

@@ -11,6 +11,6 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
      
 	<include file="classpath:/coredb-changelogs/jsoaggercore-dbchangelog-master.xml"/>
-	<include file="classpath:/db-changelogs/1.0/hermes-changelogs-1.x.x.xml"/>
+	<include file="classpath:/db-changelogs/1.0/helloworld-changelogs-1.x.x.xml"/>
 </databaseChangeLog>
 

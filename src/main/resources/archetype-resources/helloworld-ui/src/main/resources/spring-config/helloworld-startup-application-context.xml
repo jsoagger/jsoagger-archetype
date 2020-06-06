@@ -14,18 +14,18 @@
        	 		http://www.springframework.org/schema/tx/spring-tx.xsd
                 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
-	<context:annotation-config base-package="${groupId},${groupId}.starter"/>
-	<context:component-scan  base-package="${groupId}.core.server,${groupId}.starter"/>
+	<context:annotation-config base-package="io.github.jsoagger,io.github.jsoagger.starter"/>
+	<context:component-scan  base-package="io.github.jsoagger.core.server,io.github.jsoagger.starter"/>
 	
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
 
 	<!-- <bean id="mainDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
     <bean id="mainDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="${symbol_dollar}{spring.datasource.driver-class-name}" />
-        <property name="url" value="${symbol_dollar}{spring.datasource.url}" />
-        <property name="username" value="${symbol_dollar}{spring.datasource.username}" />
-        <property name="password" value="${symbol_dollar}{spring.datasource.password}" />
+        <property name="driverClassName" value="${spring.datasource.driver-class-name}" />
+        <property name="url" value="${spring.datasource.url}" />
+        <property name="username" value="${spring.datasource.username}" />
+        <property name="password" value="${spring.datasource.password}" />
         <property name="defaultAutoCommit" value="false" />
         <property name="initialSize" value="10" />
     </bean>    
@@ -60,28 +60,28 @@
   	
   	<!-- DAO EXCECUTION -->
   	<aop:config>
-	  	<aop:pointcut id="DAOOperation" expression="execution(* ${groupId}.core.server.dao.impl.*.*(..))"/>
+	  	<aop:pointcut id="DAOOperation" expression="execution(* io.github.jsoagger.core.server.dao.impl.*.*(..))"/>
   		<aop:advisor advice-ref="txAdvice" pointcut-ref="DAOOperation"/>
   	</aop:config>
   	<aop:config>
-	  	<aop:pointcut id="DAORulesOperation" expression="execution(* ${groupId}.core.server.dao.rules.*.*(..))"/>
+	  	<aop:pointcut id="DAORulesOperation" expression="execution(* io.github.jsoagger.core.server.dao.rules.*.*(..))"/>
   		<aop:advisor advice-ref="txAdvice" pointcut-ref="DAORulesOperation"/>
   	</aop:config>
   	
   	
   	<!-- SERVICES EXCECUTION -->
   	<aop:config>
-	  	<aop:pointcut id="WorkflowServiceOperation" expression="execution(* ${groupId}.core.server.service.local.impl.*.*(..))"/>
+	  	<aop:pointcut id="WorkflowServiceOperation" expression="execution(* io.github.jsoagger.core.server.service.local.impl.*.*(..))"/>
   		<aop:advisor advice-ref="txAdvice" pointcut-ref="WorkflowServiceOperation"/>
   	</aop:config>
   	
   	<aop:config>
-	  	<aop:pointcut id="RulesValidationOperation" expression="execution(* ${groupId}.core.server.service.local.rules.*x.*(..))"/>
+	  	<aop:pointcut id="RulesValidationOperation" expression="execution(* io.github.jsoagger.core.server.service.local.rules.*x.*(..))"/>
   		<aop:advisor advice-ref="txAdvice" pointcut-ref="RulesValidationOperation"/>
   	</aop:config>
 
 	<aop:config>
-	  	<aop:pointcut id="RulesProcessorOperation" expression="execution(* ${groupId}.core.server.service.local.VetoableRulesProcessor.*(..))"/>
+	  	<aop:pointcut id="RulesProcessorOperation" expression="execution(* io.github.jsoagger.core.server.service.local.VetoableRulesProcessor.*(..))"/>
   		<aop:advisor advice-ref="txAdvice" pointcut-ref="RulesProcessorOperation"/>
   	</aop:config>
 	  	
@@ -96,7 +96,7 @@
        	<property name="loadTimeWeaver">
             <bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
         </property>
-        <property name="packagesToScan" value="${groupId},${groupId}.starter.model" />
+        <property name="packagesToScan" value="io.github.jsoagger,io.github.jsoagger.starter.model" />
         <property name="dataSource" ref="mainDataSource" />
         <property name="persistenceUnitName" value="microservice-persistence-unit" />
     </bean>

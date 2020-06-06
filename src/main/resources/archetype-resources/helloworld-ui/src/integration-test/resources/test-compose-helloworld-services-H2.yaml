@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-  helloworld-ui:
+  helloworld:
     image: jsoagger/helloworld-ui:${test.docker.images.version}
     container_name: helloworld
     networks:

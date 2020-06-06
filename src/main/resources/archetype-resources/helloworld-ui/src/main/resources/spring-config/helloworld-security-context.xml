@@ -107,7 +107,7 @@
         <property name="hashSalted" value="true" />
     </bean>
     
-    <bean id="AuthenticationService" class="${groupId}.core.server.service.local.impl.AuthenticationService">
+    <bean id="AuthenticationService" class="io.github.jsoagger.core.server.service.local.impl.AuthenticationService">
         <property name="credentialsMatcher" ref="credentialMatcher" />
     </bean>
 </beans>

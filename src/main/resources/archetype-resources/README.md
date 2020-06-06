@@ -34,6 +34,16 @@ Add Nexitia's maven public repository in your maven settings:
 </repository>
 ```
  
+# Configure docker
+
+Create following docker network and volume:
+
+```
+> docker volume create helloworld_data_volume
+
+> docker network create test_network
+
+```
 
 # Build
 
@@ -61,7 +71,7 @@ Copy javascript files:
 ```
 > cd helloworld-ui
 
-> mvn install -P install-coreui
+> mvn clean install -P install-coreui
 
 > npm install -P copy-frontend
 
@@ -89,6 +99,20 @@ Launch node server:
 http://localhost:3000/
 
 http://localhost:81/login.jsp
+
+
+# Deploy to AWS
+
+TODO
+
+# Deploy to GCP
+
+TODO
+
+# Deploy to Azure
+
+TODO
+
 
 
 
