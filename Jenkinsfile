@@ -45,7 +45,7 @@ pipeline {
 	        
         	steps {
         		ansiColor('xterm') {
-	        		timeout(time: 5, unit: 'MINUTES'){
+	        		timeout(time: 2, unit: 'MINUTES'){
 	        			script {
 		                    def perfomRelease = input(
 	 							id: 'perfomRelease', message: 'Do you want to release?', ok:'Yes, release this build' 
