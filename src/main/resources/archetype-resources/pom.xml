@@ -16,7 +16,6 @@
 	<version>${version}</version>
 	<packaging>pom</packaging>
 
-	<packaging>pom</packaging>
 	<name>Jsoagger template</name>
 	<description>JSoagger project template</description>
 	
