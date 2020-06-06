@@ -12,7 +12,7 @@
 	<name>JSoagger web project archetype</name>
 	<description>JSoagger Quick Start</description>
 	<url>http://www.jsoagger.tech/</url>
-	
+
 	<properties>
 		<project.scm.id>jsoaggercore.repo</project.scm.id>
 	</properties>
@@ -192,21 +192,12 @@
 	</pluginRepositories>
 
 	<distributionManagement>
-		<site>
-			<id>api.wiki</id>
-			<url>https://github.com/jsoagger/jsoagger-platform/wiki</url>
-		</site>
-
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
 		<repository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+			<id>nexitia-releases</id>
+			<url>http://nexus.nexitia.com/repository/nexitia-releases</url>
 		</repository>
 	</distributionManagement>
-
+	
 	<reporting>
 		<outputDirectory>${project.basedir}/target/site</outputDirectory>
 	</reporting>
