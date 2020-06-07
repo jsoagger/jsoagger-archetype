@@ -13,6 +13,10 @@ Install following software:
 4. Docker desktop
  
  
+ ```
+ > mvn archetype:generate -DarchetypeGroupId=io.github.jsoagger -DarchetypeArtifactId=jsoagger-web-archetype -DarchetypeVersion=LATEST -DartifactId=helloWorld
+ ```
+ 
 # Configure maven
 
 Add Nexitia's maven public repository in your maven settings:
@@ -89,7 +93,7 @@ Install npm dependies:
 Launch node server:
 
 ```
-> package.json
+> REACT_APP_CONTEXT_ROOT=helloworld npm start
 
 ```
 

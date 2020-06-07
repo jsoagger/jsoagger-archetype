@@ -31,7 +31,7 @@
 
 	<properties>
 		<internal.core.project.version>1.0.22</internal.core.project.version>
-		<jsoagger-corebusiness-services.version>1.0.17</jsoagger-corebusiness-services.version>
+		<jsoagger-corebusiness-services.version>1.0.19</jsoagger-corebusiness-services.version>
 		<test.docker.images.version>${project.version}</test.docker.images.version>
 		<jsoagger-manager-version>1.0.11</jsoagger-manager-version>
 		<junit.verion>4.12</junit.verion>
@@ -46,7 +46,6 @@
 		<xstream.version>1.4.10</xstream.version>
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
-		<jsoagger-corebusiness-services.version>1.0.17</jsoagger-corebusiness-services.version>
 		<maven-failsafe-plugin.version>2.18</maven-failsafe-plugin.version>
 		<hibernate.version>5.4.0.Final</hibernate.version>
 		<hibernate-common-annotations.version>5.0.1.Final</hibernate-common-annotations.version>

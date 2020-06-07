@@ -15,7 +15,7 @@ const LoginLayout = React.lazy(() => import('./containers/Core/LoginLayout'));
 
 // history
 export const browserHistory = createBrowserHistory();
-const backendRootContext = process.env.REACT_APP_CONTEXT_ROOT;
+const backendUrl = 'home';
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
 /**
@@ -89,16 +89,16 @@ class App extends Component {
           <React.Suspense fallback={loading()}>
             <Switch>
             	<Route exact path="/" render={props => (
-                         <Redirect to={{ pathname: '/helloworld', state: { from: props.location } }} />
+                         <Redirect to={{ pathname: '/home', state: { from: props.location } }} />
                     )}
             	/>
             	<Route exact path="/login" name="Login" render={props => <LoginLayout {...props}/>} />
-            	<Route path={'/' + backendRootContext + '/admin'} exact name="Admin" component={AdminLayout} />
-            	<Route path={'/' + backendRootContext + '/lostPass'} name="Lost password" component={LoginLayout} />
-            	<Route path={'/' + backendRootContext} name="Accueil" component={GenericHomeLayout} />            	
-            	<Route path={'/' + backendRootContext + '/desktop'} exact name="Demo desktop" component={GenericHomeLayout} />
-            	<Route path={'/' + backendRootContext + '/mobile'} exact name="Demo mobile" component={GenericHomeLayout} />
-            	<Route path={'/' + backendRootContext + '/profile/:accountId'} name="Demo profile" component={GenericHomeLayout} />
+            	<Route path={'/admin'} exact name="Admin" component={AdminLayout} />
+            	<Route path={'/lostPass'} name="Lost password" component={LoginLayout} />
+            	<Route path={'/home'} name="Accueil" component={GenericHomeLayout} />            	
+            	<Route path={'/' + backendUrl + '/desktop'} exact name="Demo desktop" component={GenericHomeLayout} />
+            	<Route path={'/' + backendUrl + '/mobile'} exact name="Demo mobile" component={GenericHomeLayout} />
+            	<Route path={'/' + backendUrl + '/profile/:accountId'} name="Demo profile" component={GenericHomeLayout} />
             	<Route path='/400' name="Not found" component={AnonLayout} />
             	<Route path='/500' name="Error" component={AnonLayout} />
             	<Route path='*' name="Unkown" component={AnonLayout} />

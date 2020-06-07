@@ -4,7 +4,7 @@ import React from 'react';
 const GenericLoginPage = React.lazy(() => import('pages/GenericPages/GenericLoginPage'));
 const LostPassPage = React.lazy(() => import('pages/CommonPages/LostPassPage'));
 const PeopleRegisterPage = React.lazy(() => import('pages/CommonPages/PeopleRegisterPage/PeopleRegisterPage.js'));
-const backendRootContext = process.env.REACT_APP_CONTEXT_ROOT;
+const backendUrl = 'home';
 
 //clients pages
 const DemoPeopleDetailsPage = React.lazy(() => import('pages/GenericPages/PeopleDetailsPage/PeopleDetailsPage.js'));
@@ -16,14 +16,15 @@ const DemoAdminHomePage = React.lazy(() => import('pages/GenericPages/GenericMan
 
 //routes  
 const demoRoutes = [
-	{ path: `/${backendRootContext}`, exact: true, name: 'Demo', component: DemoGenericHomePage },
-	{ path: `/${backendRootContext}/desktop`, exact: true, name: 'Demo desktop', component: DemoHomeDemoDesktopPage },
-	{ path: `/${backendRootContext}/mobile`, exact: true, name: 'Demo mobile', component: DemoHomeDemoMobilePage },
-	{ path: `/${backendRootContext}/profile/:accountId`, exact: true, name: 'User profile', component: DemoPeopleDetailsPage },
-	{ path: `/${backendRootContext}/admin`, exact: true, name: 'Admin', component: DemoAdminHomePage },
+	{ path: `/${backendUrl}`, exact: true, name: 'Demo', component: DemoGenericHomePage },
+	{ path: `/admin`, exact: true, name: 'Admin', component: DemoAdminHomePage },
+	{ path: `/${backendUrl}/desktop`, exact: true, name: 'Demo desktop', component: DemoHomeDemoDesktopPage },
+	{ path: `/${backendUrl}/mobile`, exact: true, name: 'Demo mobile', component: DemoHomeDemoMobilePage },
+	{ path: `/${backendUrl}/profile/:accountId`, exact: true, name: 'User profile', component: DemoPeopleDetailsPage },
 	
-	{ path: `/${backendRootContext}/lostPass`, exact: true, name: 'Lost pass', component: LostPassPage },
-	{ path: `/${backendRootContext}/userProfile/:accountId`, exact: true, name: 'Profile', component: DemoPeopleDetailsPage},
+	
+	{ path: `/lostPass`, exact: true, name: 'Lost pass', component: LostPassPage },
+	{ path: `/${backendUrl}/userProfile/:accountId`, exact: true, name: 'Profile', component: DemoPeopleDetailsPage},
 	
 	{ path: `/login`, exact: true, name: 'Authentication', component: GenericLoginPage},
 	{ path: `/register/:source`, exact: true, name: 'Register', component: PeopleRegisterPage },
