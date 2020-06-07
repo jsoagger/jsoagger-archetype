@@ -4,7 +4,7 @@
 
 	<groupId>io.github.jsoagger</groupId>
 	<artifactId>jsoagger-web-archetype</artifactId>
-	<version>1.0.3</version>
+	<version>1.0.4-SNAPSHOT</version>
 	<packaging>maven-archetype</packaging>
 
 	<name>JSoagger web project archetype</name>
@@ -114,7 +114,7 @@
 		<connection>scm:git:https://github.com/jsoagger/jsoagger-archetype.git</connection>
 		<developerConnection>scm:git:https://github.com/jsoagger/jsoagger-archetype.git</developerConnection>
 		<url>https://github.com/jsoagger/jsoagger</url>
-		<tag>1.0.3</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<repositories>
