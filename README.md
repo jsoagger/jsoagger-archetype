@@ -13,44 +13,58 @@ Install following software:
 4. Docker desktop
  
  
-# Generate a web project
+ 
+# Configure maven
 
-Add Nexitia's maven public repository in your maven settings:
+Add Nexitia's maven public repository in your maven settings.
 
+You can check location for default setting.xml used by maven with following command:
 
 ```
-<repository>
-	<id>nexitia.com</id>
-	<name>Nexitia releases</name>
-	<url>http://nexus.nexitia.com/repository/nexitia-releases/</url>
-	<snapshots>
-		<enabled>true</enabled>
-		<checksumPolicy>ignore</checksumPolicy>
-	</snapshots>
-	<releases>
-		<enabled>true</enabled>
-		<checksumPolicy>ignore</checksumPolicy>
-	</releases>
-</repository>
+> mvn help:effective-settings
+```
+
+And then add bellow repository inside a profile:
+
+```
+<repositories>
+	<repository>
+		<id>nexitia.com</id>
+		<name>Nexitia releases</name>
+		<url>http://nexus.nexitia.com/repository/nexitia-releases/</url>
+		<releases>
+			<enabled>true</enabled>
+			<checksumPolicy>ignore</checksumPolicy>
+		</releases>
+	</repository>
+</repositories>
 ```
  
-Generate a project:
+# Generate a project
+
+With maven archetype:
 
 ```
-> mvn archetype:generate -DarchetypeGroupId=io.github.jsoagger -DarchetypeArtifactId=jsoagger-web-archetype -DarchetypeVersion=LATEST -DartifactId=helloWorld
-
+ > mvn archetype:generate -DarchetypeGroupId=io.github.jsoagger -DarchetypeArtifactId=jsoagger-web-archetype -DarchetypeVersion=LATEST -DartifactId=helloWorld
 ```
 
-# Build
-
-First generate a docker image:
+# Create docker image
 
 ```
 > cd helloWorld
 > mvn clean install -P fatjar,docker
 ```
 
-Then run and populate an h2 database engine inside docker: 
+Create following docker network and volume:
+
+```
+> docker volume create helloworld_data_volume
+
+> docker network create test_network
+
+```
+
+Run an h2 database, start the backend and load some datas: 
 
 ```
 > mvn clean install -P integration-test
@@ -59,17 +73,13 @@ Then run and populate an h2 database engine inside docker:
 
 ```
 
+# Build and run Reactjs web UI
 
-# Run web UI
-
-Copy javascript files:
 
 ```
 > cd helloworld-ui
 
-> mvn clean install -P install-coreui
-
-> mvn install -P copy-frontend
+> mvn clean install -P install-coreui,copy-frontend
 
 ```
 
@@ -97,7 +107,6 @@ http://localhost:3000/
 http://localhost:81/login.jsp
 
 
-
 # Deploy to AWS
 
 TODO
@@ -109,5 +118,6 @@ TODO
 # Deploy to Azure
 
 TODO
+
 
 
